@@ -92,6 +92,7 @@ LexicalAnalyzer::LexicalAnalyzer(const string &file_name) noexcept
 	}
 	ostringstream oss(ios::binary);
 	oss << fin.rdbuf();
+	fin.close();
 	in_str = oss.str();
 
 	preprocess();
@@ -105,4 +106,24 @@ void LexicalAnalyzer::display() const noexcept
 		cout << "symbol: " << str << endl;
 		cout << "type  : " << symbol_types[type_id] << endl;
 	}
+}
+
+void LexicalAnalyzer::to_input_string() const noexcept
+{
+	for (auto &symbol_info : symbol_table)
+		cout << symbol_types[symbol_info.second] << ' ';
+}
+
+void LexicalAnalyzer::to_excel(const string &excel_name) const noexcept
+{
+	ofstream fout(excel_name.c_str(), ios::out);
+	if (!fout.is_open())
+	{
+		cerr << "Can\'t open output file!" << endl;
+		system("pause");
+		exit(-1);
+	}
+	fout << "symbol\ttype" << endl;
+	for (auto &[str, type_id] : symbol_table)
+		fout << str << '\t' << symbol_types[type_id] << endl;
 }

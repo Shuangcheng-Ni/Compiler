@@ -76,5 +76,7 @@ namespace std {
 
 		LexicalAnalyzer(const string &file_name) noexcept;
 		void display() const noexcept;
+		void to_input_string() const noexcept;
+		void to_excel(const string &excel_name = "result.xls") const noexcept;
 	};
 }

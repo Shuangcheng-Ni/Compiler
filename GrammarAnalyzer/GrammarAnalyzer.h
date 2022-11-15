@@ -13,14 +13,16 @@ namespace std {
 
 		static constexpr bool is_VN = true;
 		static constexpr bool is_VT = false;
+		static bool VN_or_VT(const string &s) noexcept;
 
 		Vset_t VN;
 		Vset_t VT;
 		vector<pair<Vpos_t, vector<Vattr_t>>> P;
+		void clear() noexcept;
 
 	public:
 		GrammarAnalyzer() noexcept = default;
-		GrammarAnalyzer(const string &file_name) noexcept { load_grammar_file(file_name); }
+		explicit GrammarAnalyzer(const string &file_name) noexcept { load_grammar_file(file_name); }
 		bool load_grammar_file(const string &file_name) noexcept;
 	};
 }

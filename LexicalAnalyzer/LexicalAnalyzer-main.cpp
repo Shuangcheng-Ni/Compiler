@@ -8,5 +8,7 @@ int main()
 	getline(cin, file_name);
 	LexicalAnalyzer la(file_name);
 	la.display();
+	la.to_input_string();
+	la.to_excel();
 	return 0;
 }
