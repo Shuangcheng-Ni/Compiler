@@ -91,7 +91,7 @@ SCAN:
 				symbol_table.emplace_back(result.str(), SymbolTypes::Float_literal + i);
 				pos += result.length();
 				goto SCAN;
-			}
+			} // regex_constants::match_continuousÖ»Æ¥Åä×Ö·û´®¿ªÍ·
 		}
 
 		cerr << "Lexical analyzing error. Stop analyzing." << endl;
